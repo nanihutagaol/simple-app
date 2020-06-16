@@ -1,1 +1,3 @@
 rootProject.name = 'simple-app'
+include 'model'
+
