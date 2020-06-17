@@ -2,9 +2,8 @@ package nanihutagaol.simpleapp.service;
 
 import nanihutagaol.simpleapp.exception.BookNotFoundException;
 import nanihutagaol.simpleapp.model.Book;
-import nanihutagaol.simpleapp.repositories.BookRepository;
+import nanihutagaol.simpleapp.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +14,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class BookService {
     @Autowired
-    @Lazy
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
