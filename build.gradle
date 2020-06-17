@@ -4,11 +4,14 @@ plugins {
 	id 'java'
 }
 
-
 allprojects {
 	group = 'nanihutagaol'
 	version = '0.0.1-SNAPSHOT'
 	sourceCompatibility = '1.8'
+
+	repositories {
+		mavenCentral()
+	}
 }
 
 configurations {
@@ -17,25 +20,16 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
-	implementation project(":model")
-	implementation project(":exception")
-	implementation project(":repository")
-	implementation project(":service")
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	implementation project(":main-app")
 }
 
 test {
 	useJUnitPlatform()
+}
+
+subprojects {
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
 }
