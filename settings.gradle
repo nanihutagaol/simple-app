@@ -5,4 +5,7 @@ include 'repository'
 include 'service'
 include 'controller'
 include 'main-app'
+include 'library'
+include 'application1'
+include 'application2'
 
