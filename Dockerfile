@@ -1,15 +1,19 @@
 FROM openjdk:8-jdk-alpine as build
 WORKDIR /app
 COPY gradlew .
-COPY .gradle .gradle
+COPY gradle gradle
+COPY build.gradle settings.gradle ./
 COPY ./controller /app/controller
 COPY ./exception /app/exception
 COPY ./main-app /app/main-app
+COPY ./model /app/model
 COPY ./repository /app/repository
 COPY ./service /app/service
-RUN ./gradlew build
+RUN ./gradlew clean build
 RUN mkdir -p /build/libs
-RUN mkdir -p build/dependency && (cd build/dependency; jar -xf ../../main-app/build/libs/*.jar)
+RUN mkdir -p build/dependency && (cd build/dependency; jar xf ../../main-app/build/libs/*.jar)
+
+RUN ls -R /app/build/dependency
 
 FROM openjdk:8-jre-alpine as production
 ARG DEPENDENCY=/app/build/dependency
