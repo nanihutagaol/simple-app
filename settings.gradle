@@ -1,11 +1,5 @@
 rootProject.name = 'simple-app'
-include 'model'
-include 'exception'
-include 'repository'
-include 'service'
-include 'controller'
-include 'main-app'
 include 'library'
-include 'application1'
-include 'application2'
+include 'book-application'
+include 'hello-application'
 

@@ -8,20 +8,12 @@ group = 'nanihutagaol'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-bootJar {
-	mainClassName = ':main-app.SimpleAppApplication'
-}
-
 jar {
 	enabled = true
 }
 
 repositories {
 	mavenCentral()
-}
-
-dependencies {
-	implementation project(":main-app")
 }
 
 test {
