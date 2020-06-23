@@ -3,15 +3,11 @@ WORKDIR /app
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle settings.gradle ./
-COPY ./controller /app/controller
-COPY ./exception /app/exception
-COPY ./main-app /app/main-app
-COPY ./model /app/model
-COPY ./repository /app/repository
-COPY ./service /app/service
-RUN ./gradlew clean build
-RUN mkdir -p /build/libs
-RUN mkdir -p build/dependency && (cd build/dependency; jar xf ../../main-app/build/libs/*.jar)
+COPY ./library ./
+COPY ./book-application ./
+COPY ./hello-application ./
+RUN ./gradlew :book-application:build
+RUN mkdir -p build/dependency && (cd build/dependency; jar xf ../../book-application/build/libs/*.jar)
 
 RUN ls -R /app/build/dependency
 
@@ -22,5 +18,5 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
-ENTRYPOINT ["java", "-cp", "app:app/lib/*","nanihutagaol.simpleapp.SimpleAppApplication"]
+ENTRYPOINT ["java", "-cp", "app:app/lib/*","nanihutagaol.simpleapp.BookApplication"]
 

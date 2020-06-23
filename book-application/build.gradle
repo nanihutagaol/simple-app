@@ -2,14 +2,6 @@ bootJar {
     mainClassName = 'nanihutagaol.simpleapp.BookApplication'
 }
 
-jar {
-    manifest {
-        attributes(
-            'Main-Class': 'nanihutagaol.simpleapp.BookApplication'
-        )
-    }
-}
-
 dependencies {
     implementation project(":library")
     implementation 'org.springframework.boot:spring-boot-starter-web'
