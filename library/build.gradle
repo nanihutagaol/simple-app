@@ -4,6 +4,8 @@ bootJar {
 
 jar {
     enabled = true
+    baseName = project.name
+    version = project.version
 }
 
 dependencies {
