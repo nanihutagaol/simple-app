@@ -1,5 +1,6 @@
 bootJar {
     mainClassName = 'nanihutagaol.simpleapp.HelloApplication'
+    layered()
 }
 
 dependencies {
