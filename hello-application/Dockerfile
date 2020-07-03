@@ -4,12 +4,10 @@ COPY gradlew .
 COPY gradle gradle
 RUN ./gradlew wrapper
 COPY build.gradle settings.gradle ./
-COPY ./library /app/library
-COPY ./book-application /app/book-application
 COPY ./hello-application /app/hello-application
 
-RUN ./gradlew :book-application:build
-RUN mkdir -p build/dependency && (cd build/dependency; java -Djarmode=layertools -jar ../../book-application/build/libs/*.jar extract)
+RUN ./gradlew :hello-application:build
+RUN mkdir -p build/dependency && (cd build/dependency; java -Djarmode=layertools -jar ../../hello-application/build/libs/*.jar extract)
 
 FROM openjdk:8-jre-alpine as production
 ARG DEPENDENCY=/app/build/dependency

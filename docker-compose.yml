@@ -1,0 +1,16 @@
+version: "3.0"
+
+services:
+  book-application:
+    build:
+      context: ./
+      dockerfile: book-application/Dockerfile
+    ports:
+      - 8080:8080
+
+  hello-application:
+    build:
+      context: ./
+      dockerfile: hello-application/Dockerfile
+    ports:
+      - 8085:8080
