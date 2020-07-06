@@ -14,3 +14,14 @@ services:
       dockerfile: hello-application/Dockerfile
     ports:
       - 8085:8080
+
+  dbpostgresql:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=simpledb
+
