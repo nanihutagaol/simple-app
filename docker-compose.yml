@@ -15,13 +15,14 @@ services:
     ports:
       - 8085:8080
 
-  dbpostgresql:
-    image: postgres:alpine
+  mariadb-host:
+    image: mariadb:latest
     ports:
-      - 5432:5432
+      - 3306:3306
     restart: always
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=simpledb
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=simpledb
 
