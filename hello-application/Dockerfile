@@ -6,7 +6,7 @@ RUN ./gradlew wrapper
 COPY build.gradle settings.gradle ./
 COPY ./hello-application /app/hello-application
 
-RUN ./gradlew :hello-application:build
+RUN ./gradlew :hello-application:bootBuildImage
 RUN mkdir -p build/dependency && (cd build/dependency; java -Djarmode=layertools -jar ../../hello-application/build/libs/*.jar extract)
 
 FROM openjdk:8-jre-alpine as production
