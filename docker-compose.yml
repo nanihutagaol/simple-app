@@ -1,28 +1,40 @@
 version: "3.0"
 
 services:
-  book-application:
+  book-app-test:
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
     build:
       context: ./
-      dockerfile: book-application/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
-
-  hello-application:
-    build:
-      context: ./
-      dockerfile: hello-application/Dockerfile
-    ports:
-      - 8085:8080
-
-  mariadb-host:
-    image: mariadb:latest
-    ports:
-      - 3306:3306
-    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=simpledb
+      - DOCKER_USERNAME=rainx14
+      - DOCKER_PASSWORD=Nopassword14
+
+#  book-application:
+#    build:
+#      context: ./
+#      dockerfile: book-application/Dockerfile
+#    ports:
+#      - 8080:8080
+#
+#  hello-application:
+#    build:
+#      context: ./
+#      dockerfile: hello-application/Dockerfile
+#    ports:
+#      - 8085:8080
+#
+#  mariadb-host:
+#    image: mariadb:latest
+#    ports:
+#      - 3306:3306
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+#      - MYSQL_PASSWORD=root
+#      - MYSQL_USER=root
+#      - MYSQL_DATABASE=simpledb
 
