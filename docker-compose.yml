@@ -1,7 +1,7 @@
 version: "3.0"
 
 services:
-  book-app-test:
+  book-app:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     build:
@@ -12,13 +12,6 @@ services:
     environment:
       - DOCKER_USERNAME=rainx14
       - DOCKER_PASSWORD=Nopassword14
-
-#  book-application:
-#    build:
-#      context: ./
-#      dockerfile: book-application/Dockerfile
-#    ports:
-#      - 8080:8080
 #
 #  hello-application:
 #    build:

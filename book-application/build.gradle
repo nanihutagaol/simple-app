@@ -8,17 +8,13 @@ bootJar {
             intoLayer("application")
         }
         dependencies {
-            intoLayer("snapshot-dependencies") {
-                include "*:*:*SNAPSHOT"
-            }
             intoLayer("company-dependencies") {
-                include "com.fasterxml.jackson.core:*"
+                include "nanihutagaol*"
             }
             intoLayer("dependencies")
         }
         layerOrder = ["dependencies",
                       "spring-boot-loader",
-                      "snapshot-dependencies",
                       "company-dependencies",
                       "application"]
     }
