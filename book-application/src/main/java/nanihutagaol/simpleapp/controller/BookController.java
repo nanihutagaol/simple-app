@@ -12,8 +12,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping("/title" +
-            "/{title}")
+    @GetMapping("/titleN/{title}")
     public String index(@PathVariable String title) {
         return Book.getTitle(title);
     }
