@@ -1,0 +1,4 @@
+FROM openjdk:8-jdk-alpine
+WORKDIR /app
+RUN apk add docker
+RUN apk add git

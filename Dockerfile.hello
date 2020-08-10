@@ -1,0 +1,17 @@
+FROM openjdk:8-jdk-alpine AS build
+WORKDIR /app
+COPY gradlew .
+COPY gradle gradle
+RUN ./gradlew wrapper
+COPY build.gradle settings.gradle ./
+COPY ./hello-application /app/hello-application
+
+RUN ./gradlew :hello-application:build
+RUN java -Djarmode=layertools -jar ../../hello-application/build/libs/*.jar extract
+
+FROM openjdk:8-jre-alpine as production
+COPY --from=build /app/dependencies/ ./
+COPY --from=build /app/spring-boot-loader/ ./
+COPY --from=build /app/company-dependencies/ ./
+COPY --from=build /app/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]

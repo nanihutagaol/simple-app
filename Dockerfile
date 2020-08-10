@@ -1,7 +1,5 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:custom
 WORKDIR /app
-RUN apk add docker
-RUN apk add git
-COPY build /app/build/
-RUN chmod +rx /app/dockerfile/book-app/script.sh
-ENTRYPOINT ["/bin/sh", "/app/dockerfile/book-app/script.sh"]
+COPY book-script.sh /app/book-script.sh
+RUN chmod +rx /app/book-script.sh
+ENTRYPOINT ["/bin/sh", "/app/book-script.sh"]
