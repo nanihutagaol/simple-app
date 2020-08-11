@@ -9,7 +9,7 @@ bootJar {
         }
         dependencies {
             intoLayer("company-dependencies") {
-                include "nanihutagaol*"
+                include "nanihutagaol:*:*"
             }
             intoLayer("dependencies")
         }
