@@ -4,14 +4,11 @@ COPY gradlew .
 COPY gradle gradle
 RUN ./gradlew wrapper
 COPY build.gradle settings.gradle ./
-COPY ./hello-application /app/hello-application
-
-RUN ./gradlew :hello-application:build
-RUN java -Djarmode=layertools -jar ../../hello-application/build/libs/*.jar extract
+COPY ./library /app/library
+COPY ./book-application /app/book-application
+RUN ./gradlew :book-application:build
 
 FROM openjdk:8-jre-alpine as production
-COPY --from=build /app/dependencies/ ./
-COPY --from=build /app/spring-boot-loader/ ./
-COPY --from=build /app/company-dependencies/ ./
-COPY --from=build /app/application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+COPY --from=build /app/book-application/build/libs/*.jar /app/book-application.jar
+ENTRYPOINT ["java", "-jar","/app/book-application.jar"]
+

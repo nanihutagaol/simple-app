@@ -1,4 +1,4 @@
-git clone -b book-dockerfile-layered https://github.com/nanihutagaol/simple-app.git
+git clone -b book-dockerfile-layered-optimize https://github.com/nanihutagaol/simple-app.git
 cd simple-app
 
 docker pull rainx14/book-app:builder || true

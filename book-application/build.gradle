@@ -20,6 +20,11 @@ bootJar {
     }
 }
 
+bootBuildImage {
+    builder = "gcr.io/paketo-buildpacks/builder:base"
+    imageName = "docker.io/my-app:v1"
+}
+
 dependencies {
     implementation project(":library")
     implementation 'org.springframework.boot:spring-boot-starter-web'
